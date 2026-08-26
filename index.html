@@ -14,13 +14,13 @@
   }
 
   html {
-    background: #E3F1AC;
+    background: #EEF7CD;
   }
 
   body {
     margin: 0;
     font-family: 'Fredoka', sans-serif;
-    background: #E3F1AC;
+    background: #EEF7CD;
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
@@ -43,7 +43,7 @@
      the top/bottom bands. Doodles are authored at the same native size in
      both, so they render identically at every viewport width. */
   .frame-wrap {
-    max-width: 1120px;
+    max-width: 1320px;
     width: 100%;
   }
 
@@ -87,6 +87,7 @@
 
   .frame-middle .page-card {
     flex: 1;
+    max-width: none;
     min-width: 0;
     margin: 0;
   }
@@ -98,19 +99,35 @@
   }
 
   .hero {
-    background: #EEF7CD;
+    background: transparent;
+    position: relative;
     border-radius: 12px;
     padding: 40px 32px;
     display: flex;
     align-items: center;
-    gap: 40px;
+    justify-content: center;
+    gap: 44px;
     flex-wrap: wrap;
+  }
+
+  .hero-doodle {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .doodle-1 { top: 6px;    left: 10px;  width: 62px; transform: rotate(-8deg); }
+  .doodle-2 { top: 18px;   right: 18px; width: 74px; transform: rotate(7deg); }
+  .doodle-3 { bottom: 10px; right: 34px; width: 78px; transform: rotate(-5deg); }
+  .doodle-4 { bottom: 26px; left: 16px;  width: 46px; transform: rotate(10deg); }
+
+  @media (max-width: 1100px) {
+    .doodle-1, .doodle-4 { display: none; }
   }
 
   .hero-cover {
     width: 200px;
     height: 267px;
-    border: 6px solid #ffffff;
     flex-shrink: 0;
     border-radius: 10px;
     overflow: hidden;
@@ -129,8 +146,9 @@
   }
 
   .hero-text {
-    flex: 1;
-    min-width: 260px;
+    flex: 1 1 400px;
+    max-width: 540px;
+    min-width: 0;
   }
 
   .hero-title {
@@ -266,6 +284,23 @@
       font-size: 19px;
     }
   }
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-text {
+      flex: 0 0 auto;
+      max-width: 100%;
+      width: 100%;
+    }
+    .hero-actions,
+    .hero-facts {
+      justify-content: center;
+    }
+    .hero-doodle { display: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -276,6 +311,10 @@
 <div class="frame-side frame-left" aria-hidden="true"></div>
 <div class="page-card">
   <div class="hero">
+    <img class="hero-doodle doodle-1" src="images/frame/stickers/ladybird_stars.png" alt="" aria-hidden="true">
+    <img class="hero-doodle doodle-2" src="images/frame/stickers/lightbulb.png" alt="" aria-hidden="true">
+    <img class="hero-doodle doodle-3" src="images/frame/stickers/ice_cream_burst.png" alt="" aria-hidden="true">
+    <img class="hero-doodle doodle-4" src="images/frame/stickers/star.png" alt="" aria-hidden="true">
     <div class="hero-cover">
       <img src="images/cover.png" alt="A-Z of Feelings book cover">
     </div>

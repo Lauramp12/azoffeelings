@@ -14,13 +14,13 @@
   }
 
   html {
-    background: #E3F1AC;
+    background: #EEF7CD;
   }
 
   body {
     margin: 0;
     font-family: 'Fredoka', sans-serif;
-    background: #E3F1AC;
+    background: #EEF7CD;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -42,7 +42,7 @@
      the top/bottom bands. Doodles are authored at the same native size in
      both, so they render identically at every viewport width. */
   .frame-wrap {
-    max-width: 1120px;
+    max-width: 1320px;
     width: 100%;
   }
 
@@ -86,6 +86,7 @@
 
   .frame-middle .page-card {
     flex: 1;
+    max-width: none;
     min-width: 0;
     margin: 0;
   }
@@ -217,6 +218,65 @@
   .btn:focus-visible {
     outline: 3px solid #3657AF;
     outline-offset: 2px;
+  }
+
+  .book-header {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    max-width: 640px;
+    margin: 0 auto 8px;
+    flex-wrap: wrap;
+  }
+
+  .book-cover {
+    width: 180px;
+    flex-shrink: 0;
+    border: 6px solid #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(27, 79, 114, 0.18);
+    background: #ffffff;
+  }
+
+  .book-cover img {
+    width: 100%;
+    display: block;
+  }
+
+  .book-header-text {
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .school-local {
+    font-size: 14.5px;
+    color: #56655e;
+    margin: 0 0 32px;
+    max-width: 520px;
+  }
+
+  .school-local strong {
+    font-weight: 600;
+    color: #3657AF;
+  }
+
+  .school-order a,
+  .school-local a {
+    color: #ED2D3B;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+
+  .school-order a:hover,
+  .school-local a:hover {
+    border-color: #ED2D3B;
+  }
+
+  @media (max-width: 600px) {
+    .book-header { gap: 22px; justify-content: center; }
+    .book-cover { width: 150px; }
   }
 
   /* Details table */
@@ -398,12 +458,18 @@
 
   <main>
 
-    <div class="book-intro">
-      <p class="eyebrow">The book</p>
-      <h1>A-Z of Feelings</h1>
-      <p class="book-subtitle">A Children's Illustrated Emotions Dictionary</p>
-      <a class="btn" href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" target="_blank" rel="noopener">Pre-order the book</a>
-      <p class="school-order">Ordering for a school? <a href="contact.html">Bulk orders can be invoiced directly</a>, with free delivery to schools in Stockton, Middlesbrough and Hartlepool this term.</p>
+    <div class="book-header">
+      <div class="book-cover">
+        <img src="images/cover.png" alt="A-Z of Feelings book cover">
+      </div>
+      <div class="book-header-text">
+        <p class="eyebrow">The book</p>
+        <h1>A-Z of Feelings</h1>
+        <p class="book-subtitle">A Children's Illustrated Emotions Dictionary</p>
+        <a class="btn" href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" target="_blank" rel="noopener">Pre-order the book</a>
+        <p class="school-order">Ordering for a school? <a href="contact.html">Get in touch</a> to enquire about bulk orders or direct invoicing.</p>
+        <p class="school-local"><strong>Are you a school in Middlesbrough, Stockton or Hartlepool?</strong> <a href="contact.html">Enquire about free delivery</a> of bulk orders during the autumn term 2026, while stocks last.</p>
+      </div>
     </div>
 
     <div class="details-card">
