@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-Z of Feelings — A Children's Illustrated Emotions Dictionary</title>
+<meta name="description" content="A-Z of Feelings: a children's illustrated emotions dictionary by Dr Laura Partington, illustrated by Daniela Frongia. Published by Troubador, 28 October 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: #E3F1AC;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Fredoka', sans-serif;
+    background: #E3F1AC;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 18px 16px 32px;
+  }
+
+  .page-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(27, 79, 114, 0.08);
+  }
+
+  /* Decorative frame (Lee's artwork)
+     Scale contract: the side strips are sized as a PERCENTAGE of the frame
+     width and drawn at background-size:100%, so they scale in lockstep with
+     the top/bottom bands. Doodles are authored at the same native size in
+     both, so they render identically at every viewport width. */
+  .frame-wrap {
+    max-width: 1120px;
+    width: 100%;
+  }
+
+  .frame-band {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    aspect-ratio: 2240 / 330;
+  }
+
+  .frame-top {
+    background-image: url('images/frame/frame_top.png');
+  }
+
+  .frame-bottom {
+    background-image: url('images/frame/frame_bottom.png');
+  }
+
+  .frame-middle {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .frame-side {
+    flex: 0 0 9.821%;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    /* The strip is cut wherever the content happens to end. Fading the last
+       stretch turns a hard slice through a doodle into a soft vanish. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+  }
+
+  .frame-left {
+    background-image: url('images/frame/side_tile_left.png');
+  }
+
+  .frame-right {
+    background-image: url('images/frame/side_tile_right.png');
+  }
+
+  .frame-middle .page-card {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 10px 6px 20px;
+    }
+  }
+
+  .hero {
+    background: #EEF7CD;
+    border-radius: 12px;
+    padding: 40px 32px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-cover {
+    width: 200px;
+    height: 267px;
+    border: 6px solid #ffffff;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(27, 79, 114, 0.18);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .hero-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #ED2D3B;
+    line-height: 1.15;
+    margin: 0 0 2px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: #3657AF;
+    letter-spacing: 0.01em;
+    margin: 0 0 20px;
+  }
+
+  .hero-headline {
+    font-size: 23px;
+    font-weight: 500;
+    color: #35454c;
+    line-height: 1.4;
+    margin: 0 0 22px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+
+  .hero-facts {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 15px;
+    font-weight: 500;
+    color: #35454c;
+  }
+
+  .hero-facts .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  .hero-facts .dot-1 { background: #ED2D3B; }
+  .hero-facts .dot-2 { background: #FEBB22; }
+  .hero-facts .dot-3 { background: #3657AF; }
+
+  .btn {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid #8183C0;
+    outline-offset: 2px;
+  }
+
+  .btn-primary {
+    background: #ED2D3B;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(237, 45, 59, 0.3);
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 22px 0 8px;
+    flex-wrap: wrap;
+  }
+
+  .site-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1B4F72;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .site-nav a:nth-child(1):hover { border-color: #ED2D3B; }
+  .site-nav a:nth-child(2):hover { border-color: #3657AF; }
+  .site-nav a:nth-child(3):hover { border-color: #FEBB22; }
+  .site-nav a:nth-child(4):hover { border-color: #D16C98; }
+
+  @media (max-width: 600px) {
+    .hero {
+      flex-direction: column;
+      padding: 28px 20px;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-cover {
+      width: 160px;
+      height: 213px;
+    }
+    .hero-text {
+      min-width: 0;
+      width: 100%;
+    }
+    .hero-actions {
+      justify-content: center;
+    }
+    .hero-facts {
+      justify-content: center;
+    }
+    .hero-title {
+      font-size: 24px;
+    }
+    .hero-headline {
+      font-size: 19px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame-wrap">
+<div class="frame-band frame-top" aria-hidden="true"></div>
+<div class="frame-middle">
+<div class="frame-side frame-left" aria-hidden="true"></div>
+<div class="page-card">
+  <div class="hero">
+    <div class="hero-cover">
+      <img src="images/cover.png" alt="A-Z of Feelings book cover">
+    </div>
+    <div class="hero-text">
+      <p class="hero-title">A-Z of Feelings</p>
+      <p class="hero-subtitle">A Children's Illustrated Emotions Dictionary</p>
+      <h1 class="hero-headline">Giving every child the words to name how they feel.</h1>
+      <div class="hero-actions">
+        <a href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" class="btn btn-primary">Pre-order the book</a>
+      </div>
+      <p class="hero-facts">
+        <span>Educational Psychologist author</span>
+        <span class="dot dot-1"></span>
+        <span>52 emotion words</span>
+        <span class="dot dot-2"></span>
+        <span>Published October 2026</span>
+      </p>
+    </div>
+  </div>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <a href="about.html">About</a>
+    <a href="book.html">Book</a>
+    <a href="resources.html">Resources</a>
+    <a href="classroom.html">Classroom</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+<div class="frame-side frame-right" aria-hidden="true"></div>
+</div>
+<div class="frame-band frame-bottom" aria-hidden="true"></div>
+</div>
+
+</body>
+</html>

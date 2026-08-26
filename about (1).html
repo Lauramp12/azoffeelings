@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — A-Z of Feelings</title>
+<meta name="description" content="Why A-Z of Feelings exists: the emotional literacy gap in primary classrooms, and one book's answer to it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: #E3F1AC;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Fredoka', sans-serif;
+    background: #E3F1AC;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 18px 16px 32px;
+  }
+
+  .page-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(27, 79, 114, 0.08);
+  }
+
+  /* Decorative frame (Lee's artwork)
+     Scale contract: the side strips are sized as a PERCENTAGE of the frame
+     width and drawn at background-size:100%, so they scale in lockstep with
+     the top/bottom bands. Doodles are authored at the same native size in
+     both, so they render identically at every viewport width. */
+  .frame-wrap {
+    max-width: 1120px;
+    width: 100%;
+  }
+
+  .frame-band {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    aspect-ratio: 2240 / 330;
+  }
+
+  .frame-top {
+    background-image: url('images/frame/frame_top.png');
+  }
+
+  .frame-bottom {
+    background-image: url('images/frame/frame_bottom.png');
+  }
+
+  .frame-middle {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .frame-side {
+    flex: 0 0 9.821%;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    /* The strip is cut wherever the content happens to end. Fading the last
+       stretch turns a hard slice through a doodle into a soft vanish. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+  }
+
+  .frame-left {
+    background-image: url('images/frame/side_tile_left.png');
+  }
+
+  .frame-right {
+    background-image: url('images/frame/side_tile_right.png');
+  }
+
+  .frame-middle .page-card {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 10px 6px 20px;
+    }
+  }
+
+  /* Top nav */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid #eef2e2;
+    margin-bottom: 32px;
+  }
+
+  .wordmark {
+    font-size: 17px;
+    font-weight: 600;
+    color: #ED2D3B;
+    text-decoration: none;
+  }
+
+  .wordmark span {
+    color: #3657AF;
+  }
+
+  .top-nav-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .top-nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #35454c;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .top-nav-links a.current {
+    color: #ED2D3B;
+    border-color: #ED2D3B;
+  }
+
+  .top-nav-links a:hover {
+    border-color: #3657AF;
+  }
+
+  /* Content */
+  main {
+    padding: 0 12px 8px;
+  }
+
+  section {
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+
+  .eyebrow-problem { color: #ED2D3B; }
+  .eyebrow-solution { color: #3657AF; }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #35454c;
+    line-height: 1.3;
+    margin: 0 0 22px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #45555c;
+    margin: 0 0 20px;
+  }
+
+  .solution-banner {
+    background: #E3F1AC;
+    border-radius: 12px;
+    padding: 26px 24px;
+    text-align: center;
+    margin: 28px 0 32px;
+  }
+
+  .solution-banner p {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 600;
+    color: #3657AF;
+    line-height: 1.35;
+  }
+
+  .solution-banner a {
+    color: #ED2D3B;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+
+  .solution-banner a:hover {
+    border-color: #ED2D3B;
+  }
+
+  .cta-line.secondary {
+    margin: 14px 0 0;
+    font-size: 14.5px;
+  }
+
+  .cta-line.secondary a {
+    color: #3657AF;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+
+  .cta-line.secondary a:hover {
+    border-color: #3657AF;
+  }
+
+  .cta-line {
+    font-size: 15.5px;
+    color: #45555c;
+    margin: 0 0 16px;
+  }
+
+  .cta-block {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .author-bio {
+    max-width: 560px;
+    margin: 56px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #eef2e2;
+    text-align: center;
+  }
+
+  .author-bio .eyebrow {
+    color: #6b7a72;
+  }
+
+  .author-bio p {
+    font-size: 15px;
+    color: #45555c;
+  }
+
+  .btn {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    background: #ED2D3B;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(237, 45, 59, 0.3);
+    transition: transform 0.15s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid #3657AF;
+    outline-offset: 2px;
+  }
+
+  /* Bottom nav (matches homepage) */
+  .site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 22px 0 8px;
+    flex-wrap: wrap;
+    border-top: 1px solid #eef2e2;
+    margin-top: 8px;
+  }
+
+  .site-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #35454c;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .site-nav a:nth-child(1):hover { border-color: #ED2D3B; }
+  .site-nav a:nth-child(2):hover { border-color: #3657AF; }
+  .site-nav a:nth-child(3):hover { border-color: #FEBB22; }
+  .site-nav a:nth-child(4):hover { border-color: #D16C98; }
+  .site-nav a:nth-child(5):hover { border-color: #ED2D3B; }
+
+  @media (max-width: 600px) {
+    h2 { font-size: 22px; }
+    .solution-banner p { font-size: 18px; }
+    .top-nav { justify-content: center; text-align: center; }
+    .top-nav-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame-wrap">
+<div class="frame-band frame-top" aria-hidden="true"></div>
+<div class="frame-middle">
+<div class="frame-side frame-left" aria-hidden="true"></div>
+<div class="page-card">
+
+  <div class="top-nav">
+    <a href="index.html" class="wordmark">A-Z <span>of</span> Feelings</a>
+    <nav class="top-nav-links" aria-label="Site navigation">
+      <a href="about.html" class="current">About</a>
+      <a href="book.html">Book</a>
+      <a href="resources.html">Resources</a>
+      <a href="classroom.html">Classroom</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <section>
+      <p class="eyebrow eyebrow-problem">The problem</p>
+      <h2>Does this child have the vocabulary to express how they feel?</h2>
+
+      <p>As an Educational Psychologist, I often work with children whose behaviour is causing concern for the adults around them. When a child's presenting behaviour indicates a level of underlying emotional distress, it can be difficult for parents and school staff to understand where this is coming from. When I explore the question, "Does this child have the vocabulary to express how they feel?" the answer is very often, "No." I frequently encounter children who have no emotions vocabulary beyond 'happy' and 'sad', and sometimes, 'angry'. Other children persistently use a vague word such as 'upset' for every unpleasant feeling.</p>
+
+      <p>Having the words to name how they feel gives a child the tools to literally 'come to terms' with their experiences. The absence of these tools presents a significant problem. Without this important language, children cannot fully understand and share their internal experiences. This leaves them with no option but to express big feelings through their actions and behaviour. Sometimes that expression is distressing, frightening, or even harmful — to themselves and to those around them.</p>
+
+      <p>The government's own white paper <em>Every Child Achieving and Thriving</em> (2026) highlights a significant concern for the emotional wellbeing of UK children. It reports that the UK ranks last out of 27 European countries for how happy 15-year-olds are with their life — and that the number of children who feel they belong at school is declining. By 2029, every school will be expected to monitor children's sense of belonging.</p>
+
+
+      <p>Children cannot meaningfully develop the strong, healthy social relationships needed to foster a sense of belonging if they do not have the vocabulary to understand their own and others' emotional experiences. The earlier a child can be equipped with the language to understand their feelings, the better they can also understand and relate to their friends and peers.</p>
+    </section>
+
+    <section>
+      <p class="eyebrow eyebrow-solution">My solution</p>
+      <h2>Give every child the words.</h2>
+
+      <p>Emotional literacy support too often reaches only the children we're already worried about. But the ability to name, understand, and communicate feelings isn't a specialist skill for struggling children. It's a foundation that every child deserves — built through everyday language, consistent modelling, and the warm, persistent investment of adults who are willing to narrate their own emotional experience out loud.</p>
+
+      <p>That means putting the words somewhere every child can reach them.</p>
+
+      <div class="solution-banner">
+        <p>One book in every primary classroom.</p>
+      </div>
+
+      <p>I wanted to create a simple, affordable way for primary schools all over the UK to build emotional literacy into everyday classroom practice — something busy teachers can adopt seamlessly, for high impact and a low investment of time and money.</p>
+
+      <p>The book sits at the centre of a growing range of classroom resources, all built around the same 52 emotion words.</p>
+
+      <div class="cta-block">
+        <a href="book.html" class="btn">See the book</a>
+        <p class="cta-line secondary">or <a href="resources.html">explore the classroom resources</a></p>
+      </div>
+    </section>
+
+    <div class="author-bio">
+      <p class="eyebrow">About the author</p>
+      <p>Dr Laura Partington is an Educational Psychologist, former primary school teacher and busy parent. She holds a doctorate in Educational Psychology and has worked in schools across England since 2008, helping children find the words for what they feel.</p>
+    </div>
+
+  </main>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <a href="index.html">Home</a>
+    <a href="book.html">Book</a>
+    <a href="resources.html">Resources</a>
+    <a href="classroom.html">Classroom</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+</div>
+<div class="frame-side frame-right" aria-hidden="true"></div>
+</div>
+<div class="frame-band frame-bottom" aria-hidden="true"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In the Classroom — A-Z of Feelings</title>
+<meta name="description" content="Ten simple, low-preparation ways to use A-Z of Feelings in a primary classroom, from an Educational Psychologist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: #E3F1AC;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Fredoka', sans-serif;
+    background: #E3F1AC;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 18px 16px 32px;
+  }
+
+  .page-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(27, 79, 114, 0.08);
+  }
+
+  /* Decorative frame (Lee's artwork)
+     Scale contract: the side strips are sized as a PERCENTAGE of the frame
+     width and drawn at background-size:100%, so they scale in lockstep with
+     the top/bottom bands. Doodles are authored at the same native size in
+     both, so they render identically at every viewport width. */
+  .frame-wrap {
+    max-width: 1120px;
+    width: 100%;
+  }
+
+  .frame-band {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    aspect-ratio: 2240 / 330;
+  }
+
+  .frame-top {
+    background-image: url('images/frame/frame_top.png');
+  }
+
+  .frame-bottom {
+    background-image: url('images/frame/frame_bottom.png');
+  }
+
+  .frame-middle {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .frame-side {
+    flex: 0 0 9.821%;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    /* The strip is cut wherever the content happens to end. Fading the last
+       stretch turns a hard slice through a doodle into a soft vanish. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+  }
+
+  .frame-left {
+    background-image: url('images/frame/side_tile_left.png');
+  }
+
+  .frame-right {
+    background-image: url('images/frame/side_tile_right.png');
+  }
+
+  .frame-middle .page-card {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 10px 6px 20px;
+    }
+  }
+
+  /* Top nav */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid #eef2e2;
+    margin-bottom: 32px;
+  }
+
+  .wordmark {
+    font-size: 17px;
+    font-weight: 600;
+    color: #ED2D3B;
+    text-decoration: none;
+  }
+
+  .wordmark span {
+    color: #3657AF;
+  }
+
+  .top-nav-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .top-nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #35454c;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .top-nav-links a.current {
+    color: #ED2D3B;
+    border-color: #ED2D3B;
+  }
+
+  .top-nav-links a:hover {
+    border-color: #3657AF;
+  }
+
+  main {
+    padding: 0 12px 8px;
+  }
+
+  .intro {
+    max-width: 640px;
+    margin: 0 auto 40px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3657AF;
+    margin: 0 0 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #35454c;
+    line-height: 1.25;
+    margin: 0 0 18px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #45555c;
+    margin: 0 0 18px;
+  }
+
+  .activities {
+    max-width: 640px;
+    margin: 0 auto 40px;
+  }
+
+  .activity {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eef2e2;
+  }
+
+  .activity:last-child {
+    border-bottom: none;
+  }
+
+  .activity-number {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #EEF7CD;
+    color: #3657AF;
+    font-size: 14.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .activity-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .activity h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #35454c;
+    margin: 0 0 8px;
+  }
+
+  .activity p {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .activity em {
+    color: #56655e;
+  }
+
+  .note {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    background: #f7fbef;
+    border-left: 5px solid #3657AF;
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+
+  .note h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #3657AF;
+    margin: 0 0 10px;
+  }
+
+  .note p {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .closing {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .btn {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    background: #ED2D3B;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(237, 45, 59, 0.3);
+    transition: transform 0.15s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid #3657AF;
+    outline-offset: 2px;
+  }
+
+  .closing p {
+    font-size: 14.5px;
+    margin: 14px 0 0;
+  }
+
+  .closing p a {
+    color: #3657AF;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+
+  .closing p a:hover {
+    border-color: #3657AF;
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 22px 0 8px;
+    flex-wrap: wrap;
+    border-top: 1px solid #eef2e2;
+    margin-top: 40px;
+  }
+
+  .site-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #35454c;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .site-nav a:nth-child(1):hover { border-color: #ED2D3B; }
+  .site-nav a:nth-child(2):hover { border-color: #3657AF; }
+  .site-nav a:nth-child(3):hover { border-color: #FEBB22; }
+  .site-nav a:nth-child(4):hover { border-color: #D16C98; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 23px; }
+    .top-nav { justify-content: center; text-align: center; }
+    .top-nav-links { justify-content: center; }
+    .activity { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame-wrap">
+<div class="frame-band frame-top" aria-hidden="true"></div>
+<div class="frame-middle">
+<div class="frame-side frame-left" aria-hidden="true"></div>
+<div class="page-card">
+
+  <div class="top-nav">
+    <a href="index.html" class="wordmark">A-Z <span>of</span> Feelings</a>
+    <nav class="top-nav-links" aria-label="Site navigation">
+      <a href="about.html">About</a>
+      <a href="book.html">Book</a>
+      <a href="resources.html">Resources</a>
+      <a href="classroom.html" class="current">Classroom</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <div class="intro">
+      <p class="eyebrow">In the classroom</p>
+      <h1>Ten simple ways to use the book in everyday classroom life.</h1>
+      <p>Emotional literacy works best when it is part of the ordinary school day rather than a separate lesson. None of these need planning time, printing, or preparation — most take a few minutes and use nothing but the book itself.</p>
+      <p>They support PSHE, the EYFS Personal, Social and Emotional Development strand, and the growing focus on belonging and inclusion in schools — but they are designed first and foremost to be genuinely usable by a busy teacher.</p>
+    </div>
+
+    <div class="activities">
+      <div class="activity">
+        <span class="activity-number">1</span>
+        <div class="activity-body">
+          <h2>Word of the week</h2>
+          <p>Choose one emotion word each Monday and display it somewhere visible, then refer to it naturally across the week — <em>"I'm feeling a bit overwhelmed today, just like our word of the week."</em> Children can add a sticky note to the display when they notice themselves feeling that way, or draw it if writing is a barrier.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">2</span>
+        <div class="activity-body">
+          <h2>Morning check-in</h2>
+          <p>As children come in, they say or point to a word that captures how they're feeling. This can be as quick as a glance and a word, or paired with a chart of words on the wall. It helps to offer a private option too — a card kept in a tray, or a quiet word with an adult — so that no child has to announce a difficult feeling publicly. With younger children, a smaller set of words works better than all fifty-two.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">3</span>
+        <div class="activity-body">
+          <h2>Link to the class story</h2>
+          <p>When reading any book or text, pause and ask: <em>"What word from our feelings dictionary could describe how this character is feeling right now?"</em> Following it with <em>"and what do you think they need?"</em> moves children from naming a feeling to thinking about how to respond to it. No extra planning, and it works with any text.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">4</span>
+        <div class="activity-body">
+          <h2>End-of-day reflection</h2>
+          <p>Just before home time, ask children to choose a word that describes how they felt about something that happened today. Give them a minute to talk it over with a partner, then invite two or three to share with the class. It takes under five minutes and makes reflection an ordinary part of the day.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">5</span>
+        <div class="activity-body">
+          <h2>Book on display</h2>
+          <p>Keep the book open on a stand at a different page each day, or pin a different page to a display board. New words enter children's awareness gently, with no active teaching time at all.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">6</span>
+        <div class="activity-body">
+          <h2>Tricky word challenge</h2>
+          <p>Introduce one of the more ambitious words — nonchalant, zealous, quirky — as a tricky word of the day. Framed as a challenge rather than a lesson, it stretches vocabulary and gives children a word most adults don't expect them to know.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">7</span>
+        <div class="activity-body">
+          <h2>Say it out loud yourself</h2>
+          <p>The most powerful thing an adult can do is use the words about themselves. <em>"I felt frustrated when the printer jammed, but I'm relieved it's working now."</em> Children learn emotional vocabulary the way they learn any vocabulary — by hearing it used naturally, and often, by people they trust.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">8</span>
+        <div class="activity-body">
+          <h2>Shades of meaning</h2>
+          <p>Put two or three near-neighbours side by side — worried, anxious, terrified — and ask which is strongest, or which fits a particular situation best. This is where children move from having <em>a</em> word to having the <em>right</em> word, and it doubles as vocabulary work.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">9</span>
+        <div class="activity-body">
+          <h2>Feelings across the curriculum</h2>
+          <p>Use the words beyond story time. How did that historical figure feel? How might someone feel when they get stuck on a problem? How did you feel in PE today? It reinforces that feelings belong everywhere in school life, not only in PSHE lessons.</p>
+        </div>
+      </div>
+      <div class="activity">
+        <span class="activity-number">10</span>
+        <div class="activity-body">
+          <h2>After a wobble</h2>
+          <p>When something has gone wrong, use the book to find the word before unpicking the behaviour. <em>"Which of these is closest to how you felt?"</em> Naming the feeling first often makes the conversation that follows far more productive.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <h2>A note on responding</h2>
+      <p>Inviting children to name how they feel makes it more likely that some will name something difficult. That is a good sign, not a problem — but it helps to decide in advance how your setting will respond. In most cases acknowledging the feeling is enough: naming it is the point, and it does not need fixing. If something a child says concerns you, follow your school's usual pastoral and safeguarding routes as you would for any other disclosure.</p>
+    </div>
+
+    <div class="closing">
+      <a href="book.html" class="btn">See the book</a>
+      <p>or <a href="resources.html">explore the classroom resources</a></p>
+    </div>
+
+  </main>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="book.html">Book</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+</div>
+<div class="frame-side frame-right" aria-hidden="true"></div>
+</div>
+<div class="frame-band frame-bottom" aria-hidden="true"></div>
+</div>
+
+</body>
+</html>

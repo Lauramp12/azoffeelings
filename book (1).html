@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Book — A-Z of Feelings</title>
+<meta name="description" content="A-Z of Feelings: a children's illustrated emotions dictionary. 52 emotion words, format, pricing and pre-order details.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: #E3F1AC;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Fredoka', sans-serif;
+    background: #E3F1AC;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 18px 16px 32px;
+  }
+
+  .page-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(27, 79, 114, 0.08);
+  }
+
+  /* Decorative frame (Lee's artwork)
+     Scale contract: the side strips are sized as a PERCENTAGE of the frame
+     width and drawn at background-size:100%, so they scale in lockstep with
+     the top/bottom bands. Doodles are authored at the same native size in
+     both, so they render identically at every viewport width. */
+  .frame-wrap {
+    max-width: 1120px;
+    width: 100%;
+  }
+
+  .frame-band {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    aspect-ratio: 2240 / 330;
+  }
+
+  .frame-top {
+    background-image: url('images/frame/frame_top.png');
+  }
+
+  .frame-bottom {
+    background-image: url('images/frame/frame_bottom.png');
+  }
+
+  .frame-middle {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .frame-side {
+    flex: 0 0 9.821%;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    /* The strip is cut wherever the content happens to end. Fading the last
+       stretch turns a hard slice through a doodle into a soft vanish. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), rgba(0,0,0,0) 100%);
+  }
+
+  .frame-left {
+    background-image: url('images/frame/side_tile_left.png');
+  }
+
+  .frame-right {
+    background-image: url('images/frame/side_tile_right.png');
+  }
+
+  .frame-middle .page-card {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 10px 6px 20px;
+    }
+  }
+
+  /* Top nav */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid #eef2e2;
+    margin-bottom: 32px;
+  }
+
+  .wordmark {
+    font-size: 17px;
+    font-weight: 600;
+    color: #ED2D3B;
+    text-decoration: none;
+  }
+
+  .wordmark span {
+    color: #3657AF;
+  }
+
+  .top-nav-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .top-nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #35454c;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .top-nav-links a.current {
+    color: #ED2D3B;
+    border-color: #ED2D3B;
+  }
+
+  .top-nav-links a:hover {
+    border-color: #3657AF;
+  }
+
+  /* Content */
+  main {
+    padding: 0 12px 8px;
+  }
+
+  .book-intro {
+    max-width: 640px;
+    margin: 0 auto 8px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3657AF;
+    margin: 0 0 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ED2D3B;
+    line-height: 1.2;
+    margin: 0 0 6px;
+  }
+
+  .book-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #3657AF;
+    margin: 0 0 24px;
+  }
+
+  .btn {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    background: #ED2D3B;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(237, 45, 59, 0.3);
+    transition: transform 0.15s ease;
+    margin-bottom: 14px;
+  }
+
+  .school-order {
+    font-size: 14.5px;
+    color: #56655e;
+    margin: 0 0 32px;
+    max-width: 520px;
+  }
+
+  .school-order a {
+    color: #3657AF;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+
+  .school-order a:hover {
+    border-color: #3657AF;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid #3657AF;
+    outline-offset: 2px;
+  }
+
+  /* Details table */
+  .details-card {
+    max-width: 640px;
+    margin: 0 auto 48px;
+    background: #f7fbef;
+    border-radius: 12px;
+    padding: 6px 22px;
+  }
+
+  .details-card table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .details-card td {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5ecd7;
+    font-size: 15px;
+    color: #35454c;
+  }
+
+  .details-card tr:last-child td {
+    border-bottom: none;
+  }
+
+  .details-card td:first-child {
+    font-weight: 600;
+    color: #3657AF;
+    width: 42%;
+  }
+
+  /* Body sections */
+  section {
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #35454c;
+    margin: 0 0 18px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #45555c;
+    margin: 0 0 18px;
+  }
+
+  /* Word list grid */
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+  }
+
+  .word-entry {
+    display: flex;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #f7fbef;
+    border-radius: 8px;
+    align-items: baseline;
+  }
+
+  .word-entry .letter {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ED2D3B;
+    flex-shrink: 0;
+    width: 20px;
+  }
+
+  .word-entry .words {
+    font-size: 14.5px;
+    color: #35454c;
+  }
+
+  .word-entry .words .divider {
+    color: #a9bfa0;
+    padding: 0 2px;
+  }
+
+  .closing-cta {
+    max-width: 640px;
+    margin: 0 auto 8px;
+    padding-top: 34px;
+    border-top: 1px solid #eef2e2;
+    text-align: center;
+  }
+
+  .closing-cta .btn {
+    margin-bottom: 12px;
+  }
+
+  .closing-cta p {
+    font-size: 14.5px;
+    color: #56655e;
+    margin: 0;
+  }
+
+  .closing-cta a.inline {
+    color: #3657AF;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+
+  .closing-cta a.inline:hover {
+    border-color: #3657AF;
+  }
+
+  /* Bottom nav */
+  .site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 22px 0 8px;
+    flex-wrap: wrap;
+    border-top: 1px solid #eef2e2;
+    margin-top: 8px;
+  }
+
+  .site-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #35454c;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .site-nav a:nth-child(1):hover { border-color: #ED2D3B; }
+  .site-nav a:nth-child(2):hover { border-color: #3657AF; }
+  .site-nav a:nth-child(3):hover { border-color: #FEBB22; }
+  .site-nav a:nth-child(4):hover { border-color: #D16C98; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .word-grid {
+      grid-template-columns: 1fr;
+    }
+    .details-card {
+      padding: 4px 16px;
+    }
+    .top-nav {
+      justify-content: center;
+      text-align: center;
+    }
+    .top-nav-links {
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame-wrap">
+<div class="frame-band frame-top" aria-hidden="true"></div>
+<div class="frame-middle">
+<div class="frame-side frame-left" aria-hidden="true"></div>
+<div class="page-card">
+
+  <div class="top-nav">
+    <a href="index.html" class="wordmark">A-Z <span>of</span> Feelings</a>
+    <nav class="top-nav-links" aria-label="Site navigation">
+      <a href="about.html">About</a>
+      <a href="book.html" class="current">Book</a>
+      <a href="resources.html">Resources</a>
+      <a href="classroom.html">Classroom</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <div class="book-intro">
+      <p class="eyebrow">The book</p>
+      <h1>A-Z of Feelings</h1>
+      <p class="book-subtitle">A Children's Illustrated Emotions Dictionary</p>
+      <a class="btn" href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" target="_blank" rel="noopener">Pre-order the book</a>
+      <p class="school-order">Ordering for a school? <a href="contact.html">Bulk orders can be invoiced directly</a>, with free delivery to schools in Stockton, Middlesbrough and Hartlepool this term.</p>
+    </div>
+
+    <div class="details-card">
+      <table>
+        <tr><td>Author</td><td>Dr Laura Partington</td></tr>
+        <tr><td>Illustrator</td><td>Daniela Frongia</td></tr>
+        <tr><td>Publisher</td><td>Troubador Publishing</td></tr>
+        <tr><td>Publication date</td><td>28 October 2026</td></tr>
+        <tr><td>RRP</td><td>£9.99</td></tr>
+        <tr><td>ISBN</td><td>9781806346646</td></tr>
+        <tr><td>Format</td><td>32-page paperback, colour throughout, 254 × 203mm</td></tr>
+      </table>
+    </div>
+
+    <section>
+      <h2>About the book</h2>
+      <p>A-Z of Feelings is an illustrated reference dictionary. With input from teacher colleagues, I chose 52 emotion words — two for each letter of the alphabet — from 'amazed' to 'zealous'. Each word is paired with a child-friendly definition and an original illustration by Daniela Frongia, whose work captures children experiencing the feelings in recognisable everyday moments.</p>
+      <p>The range of vocabulary included is deliberately broad, combining everyday words with some unusual and ambitious ones. It is also deliberately balanced so that each letter (as far as the English language allows!) pairs a positive emotional experience with a harder one, ensuring that children can understand and express both pleasant and unpleasant feelings.</p>
+      <p>The book is designed to be used across the primary school age range. The illustrations make each concept visually accessible to pre-readers, early-readers and non-speaking children, while the written definitions can be accessed by older children and those who can read more confidently.</p>
+      <p>The book can be explored independently by children who are seeking a word for how they feel, or used by adults to open conversations about emotional experience.</p>
+    </section>
+
+    <section>
+      <h2>The full word list</h2>
+      <div class="word-grid">
+        <div class="word-entry"><span class="letter">A</span><span class="words">Amazed<span class="divider">·</span>Anxious</span></div>
+        <div class="word-entry"><span class="letter">B</span><span class="words">Brave<span class="divider">·</span>Bored</span></div>
+        <div class="word-entry"><span class="letter">C</span><span class="words">Confident<span class="divider">·</span>Confused</span></div>
+        <div class="word-entry"><span class="letter">D</span><span class="words">Delighted<span class="divider">·</span>Disappointed</span></div>
+        <div class="word-entry"><span class="letter">E</span><span class="words">Eager<span class="divider">·</span>Embarrassed</span></div>
+        <div class="word-entry"><span class="letter">F</span><span class="words">Fulfilled<span class="divider">·</span>Frustrated</span></div>
+        <div class="word-entry"><span class="letter">G</span><span class="words">Grateful<span class="divider">·</span>Guilty</span></div>
+        <div class="word-entry"><span class="letter">H</span><span class="words">Hopeful<span class="divider">·</span>Helpless</span></div>
+        <div class="word-entry"><span class="letter">I</span><span class="words">Inspired<span class="divider">·</span>Impatient</span></div>
+        <div class="word-entry"><span class="letter">J</span><span class="words">Joyful<span class="divider">·</span>Jealous</span></div>
+        <div class="word-entry"><span class="letter">K</span><span class="words">Kind<span class="divider">·</span>Knocked confidence</span></div>
+        <div class="word-entry"><span class="letter">L</span><span class="words">Loved<span class="divider">·</span>Lonely</span></div>
+        <div class="word-entry"><span class="letter">M</span><span class="words">Motivated<span class="divider">·</span>Miserable</span></div>
+        <div class="word-entry"><span class="letter">N</span><span class="words">Nonchalant<span class="divider">·</span>Nervous</span></div>
+        <div class="word-entry"><span class="letter">O</span><span class="words">Optimistic<span class="divider">·</span>Overwhelmed</span></div>
+        <div class="word-entry"><span class="letter">P</span><span class="words">Proud<span class="divider">·</span>Preoccupied</span></div>
+        <div class="word-entry"><span class="letter">Q</span><span class="words">Quirky<span class="divider">·</span>Queasy</span></div>
+        <div class="word-entry"><span class="letter">R</span><span class="words">Relieved<span class="divider">·</span>Resentful</span></div>
+        <div class="word-entry"><span class="letter">S</span><span class="words">Strong<span class="divider">·</span>Shy</span></div>
+        <div class="word-entry"><span class="letter">T</span><span class="words">Thrilled<span class="divider">·</span>Terrified</span></div>
+        <div class="word-entry"><span class="letter">U</span><span class="words">Upbeat<span class="divider">·</span>Unsafe</span></div>
+        <div class="word-entry"><span class="letter">V</span><span class="words">Valued<span class="divider">·</span>Vengeful</span></div>
+        <div class="word-entry"><span class="letter">W</span><span class="words">Worthy<span class="divider">·</span>Worried</span></div>
+        <div class="word-entry"><span class="letter">X</span><span class="words">eXcited<span class="divider">·</span>eXasperated</span></div>
+        <div class="word-entry"><span class="letter">Y</span><span class="words">Youthful<span class="divider">·</span>Yearning</span></div>
+        <div class="word-entry"><span class="letter">Z</span><span class="words">Zany<span class="divider">·</span>Zealous</span></div>
+      </div>
+    </section>
+
+    <div class="closing-cta">
+      <a class="btn" href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" target="_blank" rel="noopener">Pre-order the book</a>
+      <p>Or <a class="inline" href="contact.html">get in touch</a> about orders for your school.</p>
+    </div>
+
+  </main>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="resources.html">Resources</a>
+    <a href="classroom.html">Classroom</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+</div>
+<div class="frame-side frame-right" aria-hidden="true"></div>
+</div>
+<div class="frame-band frame-bottom" aria-hidden="true"></div>
+</div>
+
+</body>
+</html>
