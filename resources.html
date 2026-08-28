@@ -456,6 +456,56 @@
     .top-nav { justify-content: center; text-align: center; }
     .top-nav-links { justify-content: center; }
   }
+
+  /* ---- Desktop layout system (min-width 1100px only) ----
+     Frame is a fixed physical size here rather than scaling with the window,
+     so the doodles stop dominating the text on large screens. */
+  @media (min-width: 1100px) {
+    .frame-wrap { max-width: 1600px; }
+
+    .frame-band {
+      aspect-ratio: auto;
+      height: 120px;
+      background-repeat: repeat-x;
+      background-size: auto 120px;
+      background-position: center top;
+    }
+
+    .frame-side {
+      flex: 0 0 80px;
+      background-size: 80px auto;
+    }
+
+    /* chrome */
+    .wordmark { font-size: 23px; }
+    .top-nav-links a, .site-nav a { font-size: 16.5px; }
+    .top-nav-links { gap: 28px; }
+    .site-nav { gap: 38px; }
+    .btn { font-size: 16.5px; padding: 13px 26px; }
+    .eyebrow { font-size: 14.5px; letter-spacing: 0.1em; }
+
+    /* type */
+    h1 { font-size: 38px; }
+    h2 { font-size: 30px; }
+    main p { font-size: 20px; line-height: 1.65; }
+  }
+
+  @media (min-width: 1100px) {
+    .intro, .resources, .suggest-callout { max-width: 960px; }
+    .intro p, .intro h1 { max-width: 840px; }
+    .resource-card { padding: 28px 32px; }
+    .resource-card h2 { font-size: 23px; }
+    .resource-card p { font-size: 17.5px; }
+    .poster-versions, .future-list { font-size: 17.5px; }
+    .version-note, .future-note { font-size: 16px; }
+    .suggest-callout h2 { font-size: 24px; }
+    .suggest-callout p { font-size: 17.5px; }
+    .signup-field label { font-size: 14.5px; }
+    .signup-field input, .signup-field select { font-size: 16.5px; }
+    .signup-form button { font-size: 16.5px; }
+    .signup-small { font-size: 14.5px; }
+  }
+
 </style>
 </head>
 <body>

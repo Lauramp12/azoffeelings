@@ -299,6 +299,51 @@
     .top-nav-links { justify-content: center; }
     .contact-card { padding: 28px 20px; }
   }
+
+  /* ---- Desktop layout system (min-width 1100px only) ----
+     Frame is a fixed physical size here rather than scaling with the window,
+     so the doodles stop dominating the text on large screens. */
+  @media (min-width: 1100px) {
+    .frame-wrap { max-width: 1600px; }
+
+    .frame-band {
+      aspect-ratio: auto;
+      height: 120px;
+      background-repeat: repeat-x;
+      background-size: auto 120px;
+      background-position: center top;
+    }
+
+    .frame-side {
+      flex: 0 0 80px;
+      background-size: 80px auto;
+    }
+
+    /* chrome */
+    .wordmark { font-size: 23px; }
+    .top-nav-links a, .site-nav a { font-size: 16.5px; }
+    .top-nav-links { gap: 28px; }
+    .site-nav { gap: 38px; }
+    .btn { font-size: 16.5px; padding: 13px 26px; }
+    .eyebrow { font-size: 14.5px; letter-spacing: 0.1em; }
+
+    /* type */
+    h1 { font-size: 38px; }
+    h2 { font-size: 30px; }
+    main p { font-size: 20px; line-height: 1.65; }
+  }
+
+  @media (min-width: 1100px) {
+    .intro { max-width: 720px; }
+    .contact-card, .schools-card { max-width: 660px; }
+    .contact-card { padding: 40px 36px; }
+    .schools-card { padding: 32px 36px; }
+    .schools-card h2 { font-size: 22px; }
+    .schools-card p { font-size: 17.5px; }
+    .contact-label { font-size: 14px; }
+    .response-note { font-size: 15.5px; }
+  }
+
 </style>
 </head>
 <body>

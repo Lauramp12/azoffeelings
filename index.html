@@ -301,6 +301,54 @@
     .hero-doodle { display: none; }
   }
 
+
+  /* ---- Desktop layout system (min-width 1100px only) ----
+     Frame is a fixed physical size here rather than scaling with the window,
+     so the doodles stop dominating the text on large screens. */
+  @media (min-width: 1100px) {
+    .frame-wrap { max-width: 1600px; }
+
+    .frame-band {
+      aspect-ratio: auto;
+      height: 120px;
+      background-repeat: repeat-x;
+      background-size: auto 120px;
+      background-position: center top;
+    }
+
+    .frame-side {
+      flex: 0 0 80px;
+      background-size: 80px auto;
+    }
+
+    /* chrome */
+    .wordmark { font-size: 23px; }
+    .top-nav-links a, .site-nav a { font-size: 16.5px; }
+    .top-nav-links { gap: 28px; }
+    .site-nav { gap: 38px; }
+    .btn { font-size: 16.5px; padding: 13px 26px; }
+    .eyebrow { font-size: 14.5px; letter-spacing: 0.1em; }
+
+    /* type */
+    h1 { font-size: 38px; }
+    h2 { font-size: 30px; }
+    main p { font-size: 20px; line-height: 1.65; }
+  }
+
+  @media (min-width: 1100px) {
+    .hero { padding: 52px 44px; gap: 56px; }
+    .hero-cover { width: 240px; height: 320px; }
+    .hero-text { flex: 0 1 620px; max-width: 620px; }
+    .hero-title { font-size: 40px; }
+    .hero-subtitle { font-size: 19px; }
+    .hero-headline { font-size: 28px; }
+    .hero-facts { font-size: 17px; }
+    .doodle-1 { width: 74px; }
+    .doodle-2 { width: 86px; }
+    .doodle-3 { width: 90px; }
+    .doodle-4 { width: 56px; }
+  }
+
 </style>
 </head>
 <body>

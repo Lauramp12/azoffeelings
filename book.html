@@ -435,6 +435,53 @@
       justify-content: center;
     }
   }
+
+  /* ---- Desktop layout system (min-width 1100px only) ----
+     Frame is a fixed physical size here rather than scaling with the window,
+     so the doodles stop dominating the text on large screens. */
+  @media (min-width: 1100px) {
+    .frame-wrap { max-width: 1600px; }
+
+    .frame-band {
+      aspect-ratio: auto;
+      height: 120px;
+      background-repeat: repeat-x;
+      background-size: auto 120px;
+      background-position: center top;
+    }
+
+    .frame-side {
+      flex: 0 0 80px;
+      background-size: 80px auto;
+    }
+
+    /* chrome */
+    .wordmark { font-size: 23px; }
+    .top-nav-links a, .site-nav a { font-size: 16.5px; }
+    .top-nav-links { gap: 28px; }
+    .site-nav { gap: 38px; }
+    .btn { font-size: 16.5px; padding: 13px 26px; }
+    .eyebrow { font-size: 14.5px; letter-spacing: 0.1em; }
+
+    /* type */
+    h1 { font-size: 38px; }
+    h2 { font-size: 30px; }
+    main p { font-size: 20px; line-height: 1.65; }
+  }
+
+  @media (min-width: 1100px) {
+    section, .book-header, .details-card, .closing-cta { max-width: 960px; }
+    section p, section h2 { max-width: 840px; }
+    .book-cover { width: 240px; }
+    .book-subtitle { font-size: 19px; }
+    .details-card td { font-size: 18px; padding: 15px 0; }
+    .school-order, .school-local { font-size: 17px; max-width: 640px; }
+    .word-grid { grid-template-columns: repeat(3, 1fr); gap: 12px 26px; }
+    .word-entry .words { font-size: 16.5px; }
+    .word-entry .letter { font-size: 18px; }
+    .closing-cta p { font-size: 16.5px; }
+  }
+
 </style>
 </head>
 <body>
@@ -492,7 +539,7 @@
       <p>The book can be explored independently by children who are seeking a word for how they feel, or used by adults to open conversations about emotional experience.</p>
     </section>
 
-    <section>
+    <section class="word-list">
       <h2>The full word list</h2>
       <div class="word-grid">
         <div class="word-entry"><span class="letter">A</span><span class="words">Amazed<span class="divider">·</span>Anxious</span></div>

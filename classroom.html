@@ -326,6 +326,53 @@
     .top-nav-links { justify-content: center; }
     .activity { gap: 12px; }
   }
+
+  /* ---- Desktop layout system (min-width 1100px only) ----
+     Frame is a fixed physical size here rather than scaling with the window,
+     so the doodles stop dominating the text on large screens. */
+  @media (min-width: 1100px) {
+    .frame-wrap { max-width: 1600px; }
+
+    .frame-band {
+      aspect-ratio: auto;
+      height: 120px;
+      background-repeat: repeat-x;
+      background-size: auto 120px;
+      background-position: center top;
+    }
+
+    .frame-side {
+      flex: 0 0 80px;
+      background-size: 80px auto;
+    }
+
+    /* chrome */
+    .wordmark { font-size: 23px; }
+    .top-nav-links a, .site-nav a { font-size: 16.5px; }
+    .top-nav-links { gap: 28px; }
+    .site-nav { gap: 38px; }
+    .btn { font-size: 16.5px; padding: 13px 26px; }
+    .eyebrow { font-size: 14.5px; letter-spacing: 0.1em; }
+
+    /* type */
+    h1 { font-size: 38px; }
+    h2 { font-size: 30px; }
+    main p { font-size: 20px; line-height: 1.65; }
+  }
+
+  @media (min-width: 1100px) {
+    .intro, .activities, .note, .closing { max-width: 960px; }
+    .intro p, .intro h1 { max-width: 840px; }
+    .activity { gap: 20px; padding: 24px 0; }
+    .activity-number { width: 34px; height: 34px; font-size: 16px; }
+    .activity h2 { font-size: 21px; }
+    .activity p { font-size: 17.5px; max-width: 820px; }
+    .note { padding: 26px 30px; }
+    .note h2 { font-size: 21px; }
+    .note p { font-size: 17.5px; max-width: 840px; }
+    .closing p { font-size: 16.5px; }
+  }
+
 </style>
 </head>
 <body>
