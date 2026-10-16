@@ -118,8 +118,10 @@
 
   .doodle-1 { top: 6px;    left: 10px;  width: 62px; transform: rotate(-8deg); }
   .doodle-2 { top: 18px;   right: 18px; width: 74px; transform: rotate(7deg); }
-  .doodle-3 { bottom: 10px; right: 34px; width: 78px; transform: rotate(-5deg); }
-  .doodle-4 { bottom: 26px; left: 16px;  width: 46px; transform: rotate(10deg); }
+  /* doodles 3 and 4 sit in the white card's bottom corners, not the hero's */
+  .page-card { position: relative; }
+  .doodle-3 { bottom: 16px; right: 22px; width: 78px; transform: rotate(-5deg); }
+  .doodle-4 { bottom: 22px; left: 26px;  width: 46px; transform: rotate(10deg); }
 
   @media (max-width: 1100px) {
     .doodle-1, .doodle-4 { display: none; }
@@ -420,8 +422,11 @@
   }
 
   @media (min-width: 1100px) {
-    .event { padding: 22px 36px; gap: 36px; }
-    .event-art { width: 170px; }
+    /* Panel content sits on the hero's grid: art fills the 240px cover column,
+       text starts on the hero text's left edge. Panel = 916px grid + 36px padding each side. */
+    .event { max-width: 988px; padding: 24px 36px; gap: 56px; margin-top: 0; }
+    .event-art { width: 240px; padding: 0 12px; }
+    .event-text { flex: 0 1 620px; }
     .event-kicker { font-size: 30px; }
     .event-lead { font-size: 19px; }
     .event-when { font-size: 19px; }
@@ -440,8 +445,6 @@
   <div class="hero">
     <img class="hero-doodle doodle-1" src="images/frame/stickers/ladybird_stars.png" alt="" aria-hidden="true">
     <img class="hero-doodle doodle-2" src="images/frame/stickers/lightbulb.png" alt="" aria-hidden="true">
-    <img class="hero-doodle doodle-3" src="images/frame/stickers/ice_cream_burst.png" alt="" aria-hidden="true">
-    <img class="hero-doodle doodle-4" src="images/frame/stickers/star.png" alt="" aria-hidden="true">
     <div class="hero-cover">
       <img src="images/cover.png" alt="A-Z of Feelings book cover">
     </div>
@@ -485,6 +488,9 @@
     <a href="classroom.html">Classroom</a>
     <a href="contact.html">Contact</a>
   </nav>
+
+  <img class="hero-doodle doodle-3" src="images/frame/stickers/ice_cream_burst.png" alt="" aria-hidden="true">
+  <img class="hero-doodle doodle-4" src="images/frame/stickers/star.png" alt="" aria-hidden="true">
 </div>
 <div class="frame-side frame-right" aria-hidden="true"></div>
 </div>
