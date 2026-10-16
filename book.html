@@ -249,30 +249,90 @@
     min-width: 240px;
   }
 
-  .school-local {
-    font-size: 14.5px;
-    color: #56655e;
-    margin: 0 0 32px;
-    max-width: 520px;
-  }
-
-  .school-local strong {
-    font-weight: 600;
-    color: #3657AF;
-  }
-
-  .school-order a,
-  .school-local a {
+  .school-order a {
     color: #ED2D3B;
     font-weight: 500;
     text-decoration: none;
     border-bottom: 1.5px solid transparent;
   }
 
-  .school-order a:hover,
-  .school-local a:hover {
+  .school-order a:hover {
     border-color: #ED2D3B;
   }
+
+  /* Ways to buy: three routes, each labelled by who it is for */
+  .buy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .buy-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f7fbef;
+    border-radius: 12px;
+    border-top: 5px solid #ED2D3B;
+    padding: 18px 20px 6px;
+  }
+
+  .buy-shop { border-top-color: #3657AF; }
+  .buy-schools { border-top-color: #FEBB22; }
+
+  .buy-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: #3657AF;
+    margin: 0 0 6px;
+  }
+
+  .buy-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    color: #35454c;
+    margin: 0 0 8px;
+  }
+
+  .buy-card p:not(.buy-label) {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+
+  .buy-card p strong {
+    font-weight: 600;
+    color: #3657AF;
+  }
+
+  .buy-card address {
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #45555c;
+    margin: 0 0 16px;
+  }
+
+  .buy-card .btn {
+    margin-top: auto;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #3657AF;
+    border: 2px solid #3657AF;
+    box-shadow: none;
+    padding: 10px 20px;
+  }
+
+  .btn-outline:hover {
+    background: #3657AF;
+    color: #ffffff;
+  }
+
 
   @media (max-width: 600px) {
     .book-header { gap: 22px; justify-content: center; }
@@ -475,7 +535,13 @@
     .book-cover { width: 240px; }
     .book-subtitle { font-size: 19px; }
     .details-card td { font-size: 18px; padding: 15px 0; }
-    .school-order, .school-local { font-size: 17px; max-width: 640px; }
+    .school-order { font-size: 17px; max-width: 640px; }
+    .buy-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .buy-card { padding: 22px 22px 8px; }
+    .buy-label { font-size: 13.5px; }
+    .buy-card h3 { font-size: 22px; }
+    main .buy-card p:not(.buy-label), .buy-card address { font-size: 17px; }
+    .btn-outline { padding: 11px 24px; }
     .word-grid { grid-template-columns: repeat(3, 1fr); gap: 12px 26px; }
     .word-entry .words { font-size: 16.5px; }
     .word-entry .letter { font-size: 18px; }
@@ -514,8 +580,7 @@
         <h1>A-Z of Feelings</h1>
         <p class="book-subtitle">A Children's Illustrated Emotions Dictionary</p>
         <a class="btn" href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" target="_blank" rel="noopener">Pre-order the book</a>
-        <p class="school-order">Ordering for a school? <a href="contact.html">Get in touch</a> to enquire about bulk orders or direct invoicing.</p>
-        <p class="school-local"><strong>Are you a school in Middlesbrough, Stockton or Hartlepool?</strong> <a href="contact.html">Enquire about free delivery</a> of bulk orders during the autumn term 2026, while stocks last.</p>
+        <p class="school-order">Buying in Teesside, or for a school? <a href="#ways-to-buy">See all the ways to buy</a>.</p>
       </div>
     </div>
 
@@ -530,6 +595,36 @@
         <tr><td>Format</td><td>32-page paperback, colour throughout, 254 × 203mm</td></tr>
       </table>
     </div>
+
+    <section class="ways-to-buy" id="ways-to-buy">
+      <h2>Ways to buy</h2>
+      <div class="buy-grid">
+
+        <div class="buy-card buy-online">
+          <p class="buy-label">Anywhere in the UK</p>
+          <h3>Order online</h3>
+          <p>Order direct from the publisher, Troubador, for delivery to your home or school.</p>
+          <a class="btn" href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" target="_blank" rel="noopener">Pre-order the book</a>
+        </div>
+
+        <div class="buy-card buy-shop">
+          <p class="buy-label">In Teesside</p>
+          <h3>Drake The Bookshop</h3>
+          <p>Pre-order from Stockton's independent bookshop and collect in store from 28 October.</p>
+          <address>26–27 Silver Street<br>Stockton-on-Tees TS18 1SX</address>
+          <a class="btn btn-outline" href="https://www.drakethebookshop.co.uk/" target="_blank" rel="noopener">Visit Drake's website</a>
+        </div>
+
+        <div class="buy-card buy-schools">
+          <p class="buy-label">Schools and bulk orders</p>
+          <h3>Order from me</h3>
+          <p>I can invoice you directly, so you can pay by bank transfer rather than card.</p>
+          <p><strong>Middlesbrough, Stockton and Hartlepool:</strong> free delivery during the autumn term 2026, while stocks last.</p>
+          <a class="btn btn-outline" href="contact.html">Get in touch</a>
+        </div>
+
+      </div>
+    </section>
 
     <section>
       <h2>About the book</h2>
@@ -573,7 +668,7 @@
 
     <div class="closing-cta">
       <a class="btn" href="https://troubador.co.uk/bookshop/childrens-non-fiction/a-z-of-feelings" target="_blank" rel="noopener">Pre-order the book</a>
-      <p>Or <a class="inline" href="contact.html">get in touch</a> about orders for your school.</p>
+      <p>Or <a class="inline" href="#ways-to-buy">choose another way to buy</a>.</p>
     </div>
 
   </main>
