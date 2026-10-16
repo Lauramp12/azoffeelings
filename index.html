@@ -349,6 +349,85 @@
     .doodle-4 { width: 56px; }
   }
 
+  /* Launch event panel. Removes itself after the event ends (see script). */
+  .event {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    max-width: 860px;
+    margin: 4px auto 18px;
+    padding: 20px 28px;
+    background: #EEF7CD;
+    border-radius: 14px;
+  }
+
+  .event-art {
+    width: 150px;
+    height: auto;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .event-text { min-width: 0; }
+
+  .event-text p { margin: 0; }
+
+  .event-kicker {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ED2D3B;
+    line-height: 1.2;
+  }
+
+  .event-lead {
+    font-size: 16px;
+    font-weight: 500;
+    color: #3657AF;
+    margin-bottom: 10px !important;
+  }
+
+  .event-when {
+    font-size: 16px;
+    font-weight: 500;
+    color: #35454c;
+    margin-bottom: 2px !important;
+  }
+
+  .event-when .time { color: #ED2D3B; white-space: nowrap; }
+
+  .event-where {
+    font-size: 15px;
+    color: #45555c;
+  }
+
+  .event-where a {
+    color: #3657AF;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+
+  .event-where a:hover { border-color: #3657AF; }
+
+  @media (max-width: 900px) {
+    .event {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+      padding: 20px 18px;
+    }
+    .event-art { width: 130px; }
+  }
+
+  @media (min-width: 1100px) {
+    .event { padding: 22px 36px; gap: 36px; }
+    .event-art { width: 170px; }
+    .event-kicker { font-size: 30px; }
+    .event-lead { font-size: 19px; }
+    .event-when { font-size: 19px; }
+    .event-where { font-size: 17px; }
+  }
+
 </style>
 </head>
 <body>
@@ -382,6 +461,22 @@
       </p>
     </div>
   </div>
+
+  <aside class="event" data-until="2026-10-28T12:00:00Z" aria-label="Launch event">
+    <img class="event-art" src="images/reading_children.png" alt="">
+    <div class="event-text">
+      <p class="event-kicker">Meet the author</p>
+      <p class="event-lead">A friendly half-term drop-in for families</p>
+      <p class="event-when">Wednesday 28 October · <span class="time">10am – 12 noon</span></p>
+      <p class="event-where"><a href="https://www.drakethebookshop.co.uk/" target="_blank" rel="noopener">DRAKE The Bookshop</a>, 26–27 Silver Street, Stockton</p>
+    </div>
+  </aside>
+  <script>
+    (function () {
+      var e = document.querySelector('.event');
+      if (e && Date.now() > Date.parse(e.getAttribute('data-until'))) e.remove();
+    })();
+  </script>
 
   <nav class="site-nav" aria-label="Site navigation">
     <a href="about.html">About</a>
